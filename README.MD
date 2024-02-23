@@ -53,3 +53,15 @@ CTRL+F5
 
 - Renomear atributo
 > ctrl + D
+
+- Organizar o código
+> Shift+Alt+F
+
+-Cometar código
+> Shift+Alt+A
+
+Abrir arquivo no Windows
+> Shift+Alt+R
+
+More actions
+>CTRL + .

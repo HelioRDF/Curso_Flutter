@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
+import 'package:projeto_perguntas/resposta.dart';
 import './questao.dart';
 
 main() {
@@ -8,7 +9,7 @@ main() {
 
 class PerguntaAppState extends State<PerguntaApp> {
   var perguntaSelecionada = 0;
-  void responder() {
+  void _responder() {
     setState(() {
       perguntaSelecionada++;
     });
@@ -32,19 +33,9 @@ class PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             Questao(perguntas[perguntaSelecionada]),
-            ElevatedButton(
-                onPressed: responder, child: const Text('Resposta 1')),
-            ElevatedButton(
-                onPressed: () => print('Pergunta respondida 2'),
-                child: const Text('Resposta 2')),
-            ElevatedButton(
-                onPressed: () {
-                  print('Pergunta respondida 3');
-                },
-                child: const Text('Resposta 3')),
-            ElevatedButton(
-                onPressed: voltar,
-                child: const Text('Voltar')),
+            Resposta('Resposta 01',_responder),
+            Resposta('Resposta 02',_responder),
+            Resposta('Resposta 03',_responder),
           ],
         ),
       ),
