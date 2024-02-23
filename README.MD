@@ -47,3 +47,9 @@ CTRL+F5
 
 - Consultar versão do Dart
 > dart --version
+
+-Criar estrutura stateless ou stateteful
+> digita st, ctrl+barra
+
+- Renomear atributo
+> ctrl + D

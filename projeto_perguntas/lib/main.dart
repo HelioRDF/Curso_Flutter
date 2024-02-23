@@ -1,21 +1,28 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
+import './questao.dart';
 
 main() {
-  runApp(const PerguntaApp());
+  runApp(PerguntaApp());
 }
 
-class PerguntaApp extends StatelessWidget {
-  const PerguntaApp({super.key});
-
+class PerguntaAppState extends State<PerguntaApp> {
+  var perguntaSelecionada = 0;
   void responder() {
+    setState(() {
+      perguntaSelecionada++;
+    });
     print('Pergunta respondida');
   }
-
+    void voltar() {
+    setState(() {
+      perguntaSelecionada--;
+    });
+    print('Voltou!');
+  }
   @override
   Widget build(BuildContext context) {
-    final List<String> perguntas = ['Cor favorita', 'Animal Favorito'];
+    final List<String> perguntas = ['Cor favorita', 'Animal Favorito', 'Comida favorita', "Atividade Favorita"];
 
     return MaterialApp(
       home: Scaffold(
@@ -24,7 +31,7 @@ class PerguntaApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text(perguntas[0]),
+            Questao(perguntas[perguntaSelecionada]),
             ElevatedButton(
                 onPressed: responder, child: const Text('Resposta 1')),
             ElevatedButton(
@@ -35,9 +42,18 @@ class PerguntaApp extends StatelessWidget {
                   print('Pergunta respondida 3');
                 },
                 child: const Text('Resposta 3')),
+            ElevatedButton(
+                onPressed: voltar,
+                child: const Text('Voltar')),
           ],
         ),
       ),
     );
+  }
+}
+
+class PerguntaApp extends StatefulWidget {
+  PerguntaAppState createState() {
+    return PerguntaAppState();
   }
 }
