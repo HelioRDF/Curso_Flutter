@@ -8,53 +8,57 @@ main() {
 }
 
 class PerguntaAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
-  var perguntas = [];
+  var _perguntaSelecionada = 0;
+
   void _responder() {
     setState(() {
-      if (perguntaSelecionada.bitLength < perguntas.length - 1) {
-        perguntaSelecionada++;
-      } else {
-        perguntaSelecionada = 0;
-      }
+      _perguntaSelecionada++;
     });
-    print('Pergunta respondida');
   }
+
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
+  }
+
+  final _perguntas = const [
+    {
+      'texto': 'Qual é a sua cor favorita?',
+      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+    },
+    {
+      'texto': 'Qual é o seu animal favorito?',
+      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
+    },
+    {
+      'texto': 'Qual é o seu instrutor favorito?',
+      'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
-    perguntas = [
-      {
-        'texto': 'Qual é a sua cor favorita?',
-        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
-      },
-      {
-        'texto': 'Qual é o seu animal favorito?',
-        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
-      },
-      {
-        'texto': 'Qual é o seu instrutor favorito?',
-        'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
-      },
-    ];
+    List<String> respostas = temPerguntaSelecionada
+        ? _perguntas[_perguntaSelecionada]['respostas'] as List<String>
+        : [];
 
-    List<Widget> respostas = [];
-
-    for (var resp in perguntas[perguntaSelecionada]['respostas'] as List) {
-      respostas.add(Resposta(resp, _responder));
-    }
+    List<Widget> widgets =
+        respostas.map((r) => Resposta(r, _responder)).toList();
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Perguntas'),
         ),
-        body: Column(
-          children: [
-            Questao(perguntas[perguntaSelecionada]['texto'] as String),
-            ...respostas,
-          ],
-        ),
+        body: temPerguntaSelecionada
+            ? Column(
+                children: [
+                  Questao(_perguntas[_perguntaSelecionada]['texto'] as String),
+                  ...widgets,
+                ],
+              )
+            : const Center(
+                child: Text('Parabéns!', style: TextStyle(fontSize: 28)),
+              ),
       ),
     );
   }
