@@ -5,7 +5,14 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        "projeto_perguntas/macos": true,
+        "projeto_perguntas/linux": true,
+        "teste": true
     },
-    "hide-files.files": []
+    "hide-files.files": [
+        "projeto_perguntas/macos",
+        "projeto_perguntas/linux",
+        "teste"
+    ]
 }
