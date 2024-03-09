@@ -65,3 +65,4 @@ Abrir arquivo no Windows
 
 More actions
 >CTRL + .
+
