@@ -24,22 +24,24 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Despesas Pessoais'),
       ),
-      body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Container(
-          width: double.infinity,
-          child: Card(
-            color: Colors.blue,
-            child: Text('Grafico'),
-          ),
-        ),
-        Container(
-          width: double.infinity,
-          child: Card(
-            color: Colors.blue,
-            child: Text('Lista de Transações'),
-          ),
-        ),
-      ]),
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              // width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                child: Text('Grafico'),
+              ),
+            ),
+            Container(
+              child: Card(
+                color: Colors.blue,
+                child: Text('Lista de Transações'),
+              ),
+            ),
+          ]),
     );
   }
 }

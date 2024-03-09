@@ -66,3 +66,10 @@ Abrir arquivo no Windows
 More actions
 >CTRL + .
 
+-Conectar dispositivo via wlan
+1.Instalar platform-tools via android studio
+2.Configurar variável de ambiente
+> C:\Users\Gamer\AppData\Local\Android\Sdk\platform-tools
+3.Passar Ip e porta para conectar
+> adb connect 192.168.10.180:5555
+
